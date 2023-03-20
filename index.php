@@ -196,7 +196,7 @@ else if(isset($_POST['login-btn']))
 
 	//Converting to ASSOCIATIVE ARRAY
 
-	// $data  = mysqli_fetch_assoc($fetchData);
+	
 	// echo $data['username'];
 
 	if(mysqli_num_rows($fetchData) > 0)
@@ -209,17 +209,19 @@ else if(isset($_POST['login-btn']))
 		session_start();
 		$_SESSION['user_role'] = $data['user_role'];
 		$_SESSION['username'] = $data['username'];
+		$_SESSION['Key'] = $data['user_role'];
 		
-			if($data['user_role'] == "Admin")
+		
+			if( $data['user_role'] == "Admin")
 			{
-				$_SESSION['key'] == "AdminKey";
+				$_SESSION['Key'] == "AdminKey";
 				?>
 				<script> location.assign("admin/index.php")</script>
 
 			<?php
 			}
 			else{
-				$_SESSION['key'] == "votersKey";
+				$_SESSION['Key'] == "VotersKey";
 
 				?>
 				<script> location.assign("voters/index.php")</script>
