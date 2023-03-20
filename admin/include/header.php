@@ -2,11 +2,12 @@
 session_start();
 require_once("connect.php");
 
-
-if($_SESSION['key']  != "AdminKey")
+if($_SESSION['key'] != "AdminKey")
 {
-    
+    echo "<script> location.assign('logout.php'); </script>";
+    die;
 }
+
 ?>
 
 <!DOCTYPE html>
