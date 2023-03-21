@@ -6,15 +6,16 @@ require_once("connect.php");
 
 
 
-if($_SESSION['Key'] != "AdminKey")
-{
+//if($_SESSION['Key'] != "AdminKey")
+//{
 //    echo"<script> location.assign('logout.php');</script>";
 //    die;
 
-}
-// if(isset($_SESSION['Key'])) {
-//     header('Location: /index.php');
-//    }
+//}
+if(!isset($_SESSION['Key'])) {
+  header('Location: logout.php');
+
+  }
 
 ?>
 

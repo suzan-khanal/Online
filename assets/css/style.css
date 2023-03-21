@@ -15,12 +15,6 @@
 {
     color: #000;
 }
-.bg-green
-{
-    background-color: #67C232;
-}
+.bg_green{ background-color: #67C232;}
 
-.text-green
-{
-    color:#67C232;
-}
+    .text-green{ color:#67C232;}
