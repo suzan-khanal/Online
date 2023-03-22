@@ -81,7 +81,7 @@ if(isset($_GET['added']))
 
                                         
 
-                                        <td><?php echo $sno++; ?></td>
+                                        
                                     
                                     </tr>
                                     <?php
