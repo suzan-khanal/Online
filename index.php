@@ -216,7 +216,7 @@ else if(isset($_POST['login-btn']))
 			{
 				$_SESSION['Key'] == "AdminKey";
 				?>
-				<script> location.assign("admin/index.php")</script>
+				<script> location.assign("admin/index.php?Homepage=1")</script>
 
 			<?php
 			}

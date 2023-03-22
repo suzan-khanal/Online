@@ -10,7 +10,7 @@
     <ul class="navbar-nav mr-auto">
     
       <li class="nav-item">
-        <a class="nav-link text-white mr-3" href="#">Home</a>
+        <a class="nav-link text-white mr-3" href="index.php?Homepage=1">Home</a>
       </li>
       
 
@@ -25,7 +25,7 @@
       
 
       <li class="nav-item">
-        <a class="nav-link text-white mr-3" href="#">Logout</a>
+        <a class="nav-link text-white mr-3" href="logout.php">Logout</a>
       </li>
       
       
