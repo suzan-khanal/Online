@@ -18,3 +18,10 @@
 .bg_green{ background-color: #67C232;}
 
     .text-green{ color:#67C232;}
+
+.Candidate_photo{
+     width: 20px;
+     height: 20px;
+     border: 1px solid #67C232;
+     border-radius: 100%;
+     }
