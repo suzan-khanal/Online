@@ -1,6 +1,6 @@
 <?php
 require_once("include/header.php");
-require_once("include/navig.php");
+require_once("include/navigation.php");
 
 if(isset($_GET['Homepage']))
 {

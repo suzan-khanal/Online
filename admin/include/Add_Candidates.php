@@ -137,7 +137,7 @@ if(isset($_GET['added']))
                                     ?>
                                     <tr>
                                         <td><?php echo $sno++; ?></td>
-                                        <td> <img src="<?php echo $candidate_photo; ?>" style="width: 100px;height: 100px;border: 2px solid #67C232; border-radius: 100%"  />  </td>
+                                        <td> <img src="<?php echo $candidate_photo; ?>" class="Candidate_photo"  />  </td>
                                         <td><?php echo $row['Candidate_Name'] ?></td>
                                         <td><?php echo $row['Candidate_Details'] ?></td>
                                         <td><?php echo  $election_name ?></td>
