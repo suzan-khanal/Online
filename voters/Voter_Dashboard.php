@@ -46,12 +46,21 @@ require_once("include/navigation.php");
             // Fetching Candidate Votes.
             $FetchingVotes = mysqli_query($con, "SELECT * FROM votings WHERE candidate_id = '". $candidate_id ."'") or die(mysqli_error($con));
             $TotalVotes = mysqli_num_rows($FetchingVotes);
+		
+        //echo $_SESSION['user_id'];
             ?>
                 <tr>
                     <td><img src="<?php echo $candidate_Photo ?> " class="Candidate_photo"></td>
                     <td><?php echo "<b>".$candidateData['Candidate_Name'] ."</b><br />" .$candidateData['Candidate_Details'];  ?></td>
                     <td><?php echo $TotalVotes; ?> </td>
-                    <td><button class="btn btn-md btn-success">Vote</button></td>
+                    
+                     <td>
+                          <!-- <button class="btn btn-md btn-success" onclick="castvote()"> Vote </button>  -->
+                          <button class="btn btn-md btn-success" onclick="castvote(<?php echo  $Election_id;?>, 
+                          <?php  echo $candidate_id;?>, <?php  echo $_SESSION['user_id'];?> )"> Vote </button>  
+
+                        
+                     </td>
 
                 </tr>
             <?php
@@ -75,6 +84,36 @@ require_once("include/navigation.php");
 </div>
 
 </div>
+<script>
+// const castvote = () =>
+// {
+//     console.log("Working!!!");
+// }
+
+
+
+    const castvote = (election_id, candidate_id, voters_id) =>
+    {
+       //console.log(election_id + "-" + candidate_id + "-" +   voters_id);
+      $.ajax({
+       type: "POST",
+      url: "include/Ajaxcalls.php",
+       data: "e_id=" +  election_id + "&c_id="  + candidate_id + "&v_id=" +  voters_id,
+      success: function(response){
+          console.log(response);
+        if(response ==  "Success")
+            {
+                location.assign("Voter_Dashboard.php?VoteCasted=1");
+            }
+            else{
+                location.assign("Voter_Dashboard.php?VoteNotCasted=1");
+
+            }
+        }
+      });
+
+    }
+</script>
 
 
 <?php

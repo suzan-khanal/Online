@@ -1,0 +1,4 @@
+
+                                <button class="btn btn-md btn-success"
+                                 onclick="Castvote(<?php echo $Election_id; ?>,<?php echo $candidate_id;  ?>,
+                                  <?php echo $_SESSION['user_id'];  ?>)"> Vote </button> -->

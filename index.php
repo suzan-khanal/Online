@@ -210,6 +210,8 @@ else if(isset($_POST['login-btn']))
 		$_SESSION['user_role'] = $data['user_role'];
 		$_SESSION['username'] = $data['username'];
 		$_SESSION['Key'] = $data['user_role'];
+		$_SESSION['user_id'] = $data['id'];
+
 		
 		
 			if( $data['user_role'] == "Admin")
