@@ -55,6 +55,13 @@ require_once("include/navigation.php");
                     <td><?php echo $TotalVotes; ?> </td>
                     
                      <td>
+                        <?php
+                        $CheckIfVoteCasted = mysqli_query($con, "SELECT * FROM votings WHERE voters_id = '". $_SESSION['user_id'] ."'")
+                         or die(mysqli_error($con));
+                         $IsVoteCasted = mysqli_num_rows($CheckIfVoteCasted);
+
+                         echo $IsVoteCasted;
+?>
                           <!-- <button class="btn btn-md btn-success" onclick="castvote()"> Vote </button>  -->
                           <button class="btn btn-md btn-success" onclick="castvote(<?php echo  $Election_id;?>, 
                           <?php  echo $candidate_id;?>, <?php  echo $_SESSION['user_id'];?> )"> Vote </button>  
@@ -97,10 +104,10 @@ require_once("include/navigation.php");
        //console.log(election_id + "-" + candidate_id + "-" +   voters_id);
       $.ajax({
        type: "POST",
-      url: "include/Ajaxcalls.php",
+       url: "include/Ajaxcalls.php",
        data: "e_id=" +  election_id + "&c_id="  + candidate_id + "&v_id=" +  voters_id,
-      success: function(response){
-          console.log(response);
+       success: function(response){
+          //console.log(response);
         if(response ==  "Success")
             {
                 location.assign("Voter_Dashboard.php?VoteCasted=1");
