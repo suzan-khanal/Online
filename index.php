@@ -1,3 +1,41 @@
+<?php
+require_once("admin/include/connect.php");
+
+$fetchingElections = mysqli_query($con, "SELECT * FROM elections") or die(mysqli_error($con));
+while($data = mysqli_fetch_assoc($fetchingElections))
+{
+	$Starting_Date = $data['Starting_Date'];
+	$Ending_Date = $data['Ending_Date'];
+	$Current_Date = date("Y-m-d");
+	$Election_id = $data['id'];
+	$Status = $data['Status'];
+
+
+	// Active = Expire = Ending Date
+	// InActive = Active = Starting Date
+
+	if($Status == "Active")
+	{
+		$date1=date_create($Current_Date);
+		$date2=date_create($Ending_Date);
+		$diff=date_diff($date1,$date2);
+	
+		//echo var_dump((int)$diff->format("%R%a"));
+	
+		if((int)$diff->format("%R%a") < 0)
+		{	
+		echo "Expired";
+		}else{
+		$Status = "Active";
+		}
+	}else if($Staus == "InActive"){
+
+	}
+	
+}
+?>
+
+
 
 <!DOCTYPE html>
 <html>

@@ -56,16 +56,37 @@ require_once("include/navigation.php");
                     
                      <td>
                         <?php
-                        $CheckIfVoteCasted = mysqli_query($con, "SELECT * FROM votings WHERE voters_id = '". $_SESSION['user_id'] ."'")
+                        $CheckIfVoteCasted = mysqli_query($con, "SELECT * FROM votings WHERE voters_id = '". $_SESSION['user_id'] ."' AND election_id = '". $Election_id."'")
                          or die(mysqli_error($con));
                          $IsVoteCasted = mysqli_num_rows($CheckIfVoteCasted);
 
-                         echo $IsVoteCasted;
+                        if($IsVoteCasted > 0)
+                        {
+                            $voteCastedData = mysqli_fetch_assoc($CheckIfVoteCasted);
+                            $voteCastedToCandidate = $voteCastedData['candidate_id'];
+
+                            if($voteCastedToCandidate == $candidate_id)
+                            {
+                                ?>
+                                <img src="../assets/images/v.png"width="100px;">
+                                <?php
+                            }
+                          
+
+                        }else{
+                           
+                            ?>
+                            <button class="btn btn-md btn-success" onclick="castvote(<?php echo  $Election_id;?>, 
+                            <?php  echo $candidate_id;?>, <?php  echo $_SESSION['user_id'];?> )"> Vote </button>  
+  
+
+
+                            <?php
+                        }
+
 ?>
                           <!-- <button class="btn btn-md btn-success" onclick="castvote()"> Vote </button>  -->
-                          <button class="btn btn-md btn-success" onclick="castvote(<?php echo  $Election_id;?>, 
-                          <?php  echo $candidate_id;?>, <?php  echo $_SESSION['user_id'];?> )"> Vote </button>  
-
+                         
                         
                      </td>
 

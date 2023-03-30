@@ -118,7 +118,7 @@ $date2=date_create($Start_Date);
 $diff=date_diff($date1,$date2);
 
 
-if($diff->format("%R%a") > 0)
+if((int)$diff->format("%R%a") > 0)
 {
     $Status = "InActive";
 }else{
