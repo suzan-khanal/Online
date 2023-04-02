@@ -13,6 +13,9 @@ if(isset($_GET['Homepage']))
 }else if(isset($_GET['AddCandidatesPage']))
 {
     require_once("include/Add_Candidates.php");
+}else if(isset($_GET['viewResults']))
+{
+    require_once("include/viewResults.php");
 }
 
 ?>

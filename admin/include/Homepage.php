@@ -26,6 +26,7 @@
                             $sno = 1;
                                 while($row = mysqli_fetch_assoc($FetchData))
                                 {
+                                    $election_id = $row['id'];
                                     ?>
                                     <tr>
                                         <td><?php echo $sno++; ?></td>
@@ -35,7 +36,7 @@
                                         <td><?php echo $row['Ending_Date']; ?></td>
                                         <td><?php echo $row['Status']; ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-success"> View Results </a>
+                                            <a href="index.php?viewResults=<?php echo $election_id; ?> " class="btn btn-sm btn-success"> View Results </a>
 
                                         </td>
 

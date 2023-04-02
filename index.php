@@ -24,11 +24,23 @@ while($data = mysqli_fetch_assoc($fetchingElections))
 	
 		if((int)$diff->format("%R%a") < 0)
 		{	
-		echo "Expired";
-		}else{
-		$Status = "Active";
+		//Update
+		mysqli_query($con, "UPDATE elections SET Status = 'Expired' WHERE id = '". $Election_id."'") or
+		 die(mysqli_error($con));
 		}
-	}else if($Staus == "InActive"){
+	}else if($Status == "InActive"){
+		$date1=date_create($Current_Date);
+		$date2=date_create($Starting_Date);
+		$diff=date_diff($date1,$date2);
+	
+		//echo (int)$diff->format("%R%a");
+	
+		if((int)$diff->format("%R%a") <= 0)
+		{	
+			//Update
+			mysqli_query($con, "UPDATE elections SET Status = 'Active' WHERE id = '". $Election_id."'") or
+			die(mysqli_error($con));
+		}
 
 	}
 	
