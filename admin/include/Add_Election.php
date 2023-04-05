@@ -1,3 +1,5 @@
+
+
 <?php
 if(isset($_GET['added']))
 {
@@ -9,6 +11,16 @@ if(isset($_GET['added']))
 
 
 <?php
+}else if(isset($_GET['delete_id']))
+{
+    $Delete_id = $_GET['delete_id'];
+    mysqli_query($con, "DELETE FROM elections WHERE id = '". $Delete_id."'")
+    or die(mysqli_error($con));
+    ?>
+<div class="alert alert-danger my-3" role="alert">
+  ******Election has been Deleted Successfully.******
+</div>
+    <?php
 }
 ?>
 
@@ -62,8 +74,8 @@ if(isset($_GET['added']))
                             $sno = 1;
                                 while($row = mysqli_fetch_assoc($FetchData))
                                 {
-                                    ?>
-                                    <tr>
+                                    $election_id = $row['id'];
+                                    ?><tr>
                                         <td><?php echo $sno++; ?></td>
                                         <td><?php echo $row['Election_Topic']; ?></td>
                                         <td><?php echo $row['No_of_Candidates']; ?></td>
@@ -71,8 +83,9 @@ if(isset($_GET['added']))
                                         <td><?php echo $row['Ending_Date']; ?></td>
                                         <td><?php echo $row['Status']; ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-sm btn-warning"> Edit </a>
-                                            <a href="#" class="btn btn-sm btn-danger"> Delete </a>
+                                           <a href="update.php?updateid=<?= $row['id'] ?>" class="btn btn-sm btn-warning"> Edit </a>
+                                            <button class="btn btn-sm btn-danger" onclick="DeleteData(<?php echo 
+                                            $election_id;?>)"> Delete </button>
 
                                         </td>
 
@@ -100,6 +113,24 @@ if(isset($_GET['added']))
         </table>
     </div>
 </div>
+<script>
+    const DeleteData = (e_id) =>
+
+    {
+        let c = confirm("Do You Really want to Delete it?");
+
+        if(c == true)
+        {
+            //alert("Data Deleted Successfully!!!");
+            location.assign("index.php?AddElectionPage=1&delete_id=" + e_id );
+           
+
+        }
+        //alert(e_id);
+    }
+</script>
+
+
 
 
 <?php
