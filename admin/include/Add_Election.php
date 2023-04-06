@@ -24,6 +24,24 @@ if(isset($_GET['added']))
 }
 ?>
 
+
+
+<?php
+if(isset($_GET['Updated']))
+{
+?>
+
+<div class="alert alert-success my-3" role="alert">
+  ******Election has been UPDATED Successfully.******
+</div>
+
+
+<?php
+}
+?>
+
+
+
 <div class="row my-3">
     <div class="col-4">
         <h3>Add New Election</h3>
